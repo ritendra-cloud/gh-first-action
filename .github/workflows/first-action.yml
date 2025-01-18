@@ -1,5 +1,17 @@
-name: First Workflow
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      event_type:
+        description: 'Event type'
+        required: true
+        default: 'manual'
+      activity_type:
+        description: 'Activity type'
+        required: true
+        default: 'trigger'
+env:
+  ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+  ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
 jobs:
   first-job:
     runs-on: ubuntu-latest
